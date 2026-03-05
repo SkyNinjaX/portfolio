@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dumto Okonkwo | Software Engineer</title>
+  <meta name="description" content="Portfolio of Dumto Okonkwo - Computer Science Student & Aspiring Software Engineer" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { 
+      background: #4f46e5; 
+      border-radius: 4px; 
+    }
+    ::-webkit-scrollbar-thumb:hover { background: #4338ca; }
+    
+    /* Gradient Animation */
+    .gradient-bg {
+      background: linear-gradient(-45deg, #4f46e5, #7c3aed, #06b6d4, #10b981);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Glassmorphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .dark .glass {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    /* Skill Tag Hover */
+    .skill-tag {
+      transition: all 0.3s ease;
+    }
+    .skill-tag:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Project Card Hover */
+    .project-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+  
+  <!-- Floating Background Elements -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="absolute -top-20 -right-20 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+    <div class="absolute top-1/2 -left-20 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute -bottom-20 right-1/3 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 glass border-b border-gray-200/20 dark:border-gray-700/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="#" class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-cyan-500">
+          DO.
+        </a>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#about" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">About</a>
+          <a href="#skills" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">Skills</a>
+          <a href="#projects" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">Projects</a>
+          <a href="#education" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">Education</a>
+          <a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">Contact</a>
+          
+          <!-- Dark Mode Toggle -->
+          <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <i class="fas fa-moon dark:hidden"></i>
+            <i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+          </button>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden glass border-t border-gray-200/20 dark:border-gray-700/30">
+      <div class="px-4 pt-2 pb-4 space-y-1">
+        <a href="#about" class="block px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">About</a>
+        <a href="#skills" class="block px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Skills</a>
+        <a href="#projects" class="block px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Projects</a>
+        <a href="#education" class="block px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Education</a>
+        <a href="#contact" class="block px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Contact</a>
+        <button id="theme-toggle-mobile" class="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center gap-2">
+          <i class="fas fa-moon dark:hidden"></i>
+          <i class="fas fa-sun hidden dark:inline text-yellow-400"></i>
+          <span>Toggle Theme</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center relative pt-16 px-4">
+    <div class="max-w-4xl mx-auto text-center reveal active">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-medium mb-6">
+        <i class="fas fa-code"></i>
+        <span>Aspiring Software Engineer</span>
+      </div>
+      
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+        Hi, I'm <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500">Dumto Okonkwo</span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-10 max-w-3xl mx-auto">
+        Computer Science Student passionate about building <span class="font-semibold text-indigo-600 dark:text-indigo-400">scalable backend systems</span> and <span class="font-semibold text-cyan-600 dark:text-cyan-400">real-world web applications</span>.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <a href="#projects" class="px-8 py-4 bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-indigo-500/30 transition-all transform hover:-translate-y-1">
+          View My Work
+        </a>
+        <a href="#contact" class="px-8 py-4 glass border border-gray-300 dark:border-gray-600 font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all">
+          Get In Touch
+        </a>
+      </div>
+      
+      <!-- Social Links -->
+      <div class="flex justify-center gap-6">
+        <a href="https://github.com/SkyNinjaX" target="_blank" class="p-3 rounded-xl glass hover:bg-gray-200 dark:hover:bg-gray-700 transition-all transform hover:-translate-y-1" aria-label="GitHub">
+          <i class="fab fa-github text-2xl"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/dumto-o-457a65385/" target="_blank" class="p-3 rounded-xl glass hover:bg-gray-200 dark:hover:bg-gray-700 transition-all transform hover:-translate-y-1" aria-label="LinkedIn">
+          <i class="fab fa-linkedin text-2xl"></i>
+        </a>
+        <a href="mailto:dumtomicheal@gmail.com" class="p-3 rounded-xl glass hover:bg-gray-200 dark:hover:bg-gray-700 transition-all transform hover:-translate-y-1" aria-label="Email">
+          <i class="fas fa-envelope text-2xl"></i>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <i class="fas fa-chevron-down text-gray-500 dark:text-gray-400"></i>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-4 relative">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-cyan-500 mx-auto rounded-full"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+            First-year Computer Science student with a strong interest in <span class="font-semibold text-indigo-600 dark:text-indigo-400">software development</span> and <span class="font-semibold text-cyan-600 dark:text-cyan-400">backend systems</span>. Passionate about building real-world web applications and learning modern technologies through hands-on projects.
+          </p>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            Experienced in developing authentication systems, role-based dashboards, and interactive web platforms using <span class="font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Flask</span> and <span class="font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Firebase</span>.
+          </p>
+          
+          <div class="flex flex-wrap gap-3">
+            <span class="px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">🇳🇬 Nigeria</span>
+            <span class="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-sm font-medium">🎓 Year 1</span>
+            <span class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">🚀 Open to Opportunities</span>
+          </div>
+        </div>
+        
+        <div class="relative reveal">
+          <div class="glass rounded-2xl p-6 md:p-8 border border-gray-200/20 dark:border-gray-700/30">
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+              <i class="fas fa-bullseye text-indigo-600"></i>
+              Career Goal
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+              To become a highly skilled software engineer capable of building <span class="font-semibold text-indigo-600 dark:text-indigo-400">scalable and secure systems</span> that solve real-world problems.
+            </p>
+            
+            <h3 class="text-xl font-bold mt-8 mb-4 flex items-center gap-2">
+              <i class="fas fa-heart text-cyan-600"></i>
+              Interests
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Backend Development</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">System Architecture</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Web Security</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Best Practices</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Scalable Platforms</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 px-4 bg-gray-100 dark:bg-gray-800/50 relative">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical Skills</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-cyan-500 mx-auto rounded-full"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Languages -->
+        <div class="glass rounded-2xl p-6 border border-gray-200/20 dark:border-gray-700/30 reveal">
+          <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+            <i class="fas fa-code text-indigo-600"></i>
+            Languages
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-xl font-medium">Python</span>
+            <span class="skill-tag px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-xl font-medium">JavaScript</span>
+            <span class="skill-tag px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-xl font-medium">HTML5</span>
+            <span class="skill-tag px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-xl font-medium">CSS3</span>
+          </div>
+        </div>
+        
+        <!-- Frameworks -->
+        <div class="glass rounded-2xl p-6 border border-gray-200/20 dark:border-gray-700/30 reveal">
+          <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+            <i class="fas fa-layer-group text-cyan-600"></i>
+            Frameworks & Tools
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-xl font-medium">Flask</span>
+            <span class="skill-tag px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-xl font-medium">Firebase Auth</span>
+            <span class="skill-tag px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-xl font-medium">Tailwind CSS</span>
+            <span class="skill-tag px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-xl font-medium">Git & GitHub</span>
+            <span class="skill-tag px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-xl font-medium">VS Code</span>
+          </div>
+        </div>
+        
+        <!-- Concepts -->
+        <div class="glass rounded-2xl p-6 border border-gray-200/20 dark:border-gray-700/30 reveal">
+          <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+            <i class="fas fa-brain text-purple-600"></i>
+            Core Concepts
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-xl font-medium">RESTful Routing</span>
+            <span class="skill-tag px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-xl font-medium">Auth & RBAC</span>
+            <span class="skill-tag px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-xl font-medium">CRUD Operations</span>
+            <span class="skill-tag px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-xl font-medium">Database Design</span>
+            <span class="skill-tag px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-xl font-medium">Responsive Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 px-4 relative">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-cyan-500 mx-auto rounded-full"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project 1 -->
+        <div class="project-card glass rounded-2xl overflow-hidden border border-gray-200/20 dark:border-gray-700/30 reveal">
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-4">
+              <h3 class="text-xl font-bold">🎯 Fantasy Hillrange League</h3>
+              <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-xs font-medium">Flask + Firebase</span>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              A Fantasy Premier League-style web application built from scratch with real-time updates and role-based access.
+            </p>
+            <ul class="space-y-2 mb-6 text-sm text-gray-600 dark:text-gray-300">
+              <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Firebase authentication system</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Student/admin role redirection</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Club profiles with conditional joining</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Tailwind CSS styled UI</li>
+            </ul>
+            <div class="flex gap-3">
+              <a href="https://github.com/SkyNinjaX/fantasy-hillrange-league" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm font-medium">
+                <i class="fab fa-github"></i> Code
+              </a>
+              <a href="https://fantasy-hillrange-league.onrender.com" target="_blank">
+                <button class="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm font-medium">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </button>              
+              </a>
+              
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="project-card glass rounded-2xl overflow-hidden border border-gray-200/20 dark:border-gray-700/30 reveal">
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-4">
+              <h3 class="text-xl font-bold">📋 Disciplinary Booking App</h3>
+              <span class="px-3 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-xs font-medium">Flask + RBAC</span>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              Role-based Flask application for recording student disciplinary actions with secure authentication and filtering.
+            </p>
+            <ul class="space-y-2 mb-6 text-sm text-gray-600 dark:text-gray-300">
+              <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Teacher/admin account system</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Secure login/logout system</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Role-based dashboard access</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Auto detention flag for repeats</li>
+            </ul>
+            <div class="flex gap-3">
+              <a href="https://github.com/SkyNinjaX/disciplinary-booking-app" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm font-medium">
+                <i class="fab fa-github"></i> Code
+              </a>
+              <a href="https://disciplinary-booking-app.onrender.com/" target="_blank">
+                <button class="flex items-center gap-2 px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors text-sm font-medium">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="project-card glass rounded-2xl overflow-hidden border border-gray-200/20 dark:border-gray-700/30 reveal">
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-4">
+              <h3 class="text-xl font-bold">📝 Static Blog Website</h3>
+              <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs font-medium">Tailwind CSS</span>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              A responsive blog site with individual post pages, dynamic card layout, and clean light theme UI.
+            </p>
+            <ul class="space-y-2 mb-6 text-sm text-gray-600 dark:text-gray-300">
+              <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Individual post pages</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Dynamic blog card layout</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Clean light theme UI</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Structured content system</li>
+            </ul>
+            <div class="flex gap-3">
+              <a href="https://github.com/SkyNinjaX/doomzee-blog" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm font-medium">
+                <i class="fab fa-github"></i> Code
+              </a>
+              <a href="https://skyninjax.github.io/doomzee-blog/" target="_blank" >
+                <button class="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm font-medium">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="py-20 px-4 bg-gray-100 dark:bg-gray-800/50 relative">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Education</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-cyan-500 mx-auto rounded-full"></div>
+      </div>
+      
+      <div class="glass rounded-2xl p-8 border border-gray-200/20 dark:border-gray-700/30 reveal">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+          <div>
+            <h3 class="text-2xl font-bold mb-1">Bachelor of Science (B.Sc) in Computer Science</h3>
+            <p class="text-lg text-indigo-600 dark:text-indigo-400 font-medium">University of Nigeria, Nsukka</p>
+          </div>
+          <span class="mt-2 md:mt-0 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full font-medium">Year 1</span>
+        </div>
+        
+        <h4 class="font-semibold text-lg mb-3 flex items-center gap-2">
+          <i class="fas fa-book-open text-cyan-600"></i>
+          Relevant Coursework
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Introduction to Programming</span>
+          <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm">Fundamentals of Deep Learning</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-4 relative">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="reveal">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Connect</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
+          I'm always open to discussing new opportunities, collaborations, or just chatting about tech!
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <a href="mailto:dumtomicheal@gmail.com" class="flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-indigo-500/30 transition-all transform hover:-translate-y-1">
+            <i class="fas fa-envelope"></i>
+            Email Me
+          </a>
+          <a href="https://www.linkedin.com/in/dumto-o-457a65385/" target="_blank" class="flex items-center justify-center gap-3 px-8 py-4 glass border border-gray-300 dark:border-gray-600 font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all">
+            <i class="fab fa-linkedin"></i>
+            LinkedIn
+          </a>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="flex justify-center gap-6">
+          <a href="https://github.com/SkyNinjaX" target="_blank" class="p-4 rounded-2xl glass hover:bg-gray-200 dark:hover:bg-gray-700 transition-all transform hover:-translate-y-1 hover:scale-110" aria-label="GitHub">
+            <i class="fab fa-github text-3xl"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/dumto-o-457a65385/" target="_blank" class="p-4 rounded-2xl glass hover:bg-gray-200 dark:hover:bg-gray-700 transition-all transform hover:-translate-y-1 hover:scale-110" aria-label="LinkedIn">
+            <i class="fab fa-linkedin text-3xl"></i>
+          </a>
+          <a href="mailto:dumtomicheal@gmail.com" class="p-4 rounded-2xl glass hover:bg-gray-200 dark:hover:bg-gray-700 transition-all transform hover:-translate-y-1 hover:scale-110" aria-label="Email">
+            <i class="fas fa-envelope text-3xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-4 border-t border-gray-200/20 dark:border-gray-700/30">
+    <div class="max-w-6xl mx-auto text-center text-gray-600 dark:text-gray-400">
+      <p>&copy; <span id="year"></span> Dumto Okonkwo. 
+      <p class="text-sm mt-2">Built with Tailwind CSS • Hosted on GitHub Pages</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const html = document.documentElement;
+    
+    // Check for saved theme preference or respect OS preference
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+    }
+    
+    function toggleTheme() {
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        html.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
+    }
+    
+    themeToggle?.addEventListener('click', toggleTheme);
+    themeToggleMobile?.addEventListener('click', toggleTheme);
+    
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+    
+    // Scroll Reveal Animation
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    function reveal() {
+      revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', reveal);
+    // Trigger once on load
+    reveal();
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
