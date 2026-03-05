@@ -1,63 +1,88 @@
-𝔻𝕠𝕠𝕞𝕫𝕖𝕖's Blog
 
-Welcome to Doomzee's Blog — a personal space dedicated to sharing coding tips, web development guides, and tutorials to help others grow. 💻✨
+---
 
-📖 About the Project
-This project is a static personal blog built to document my coding journey. It features guides on fundamental web technologies, framework comparisons, and practical tips for beginners and intermediate developers.
+## 🚀 Projects Featured
 
-The content focuses on being practical, straight to the point, and made with passion. No fluff.
+### 1️⃣ 📋 Disciplinary Booking System
+A role-based web application for tracking student disciplinary records.
 
-👨‍💻 About the Author
+- **Tech:** Flask, SQLite, Tailwind CSS
+- **Features:** RBAC, Auto-detention flags, Live refresh, Filtering
+- **Live:** [View Demo](https://disciplinary-booking-app.onrender.com)
+- **Code:** [GitHub Repo](https://github.com/SkyNinjaX/disciplinary-booking-app)
 
-I'm 𝔻𝕠𝕠𝕞𝕫𝕖𝕖 — a young developer and high school student passionate about:
+### 2️⃣ 🏆 Fantasy Hillrange League
+A full Fantasy Premier League-style web application with real-time leaderboards.
 
-Building cool projects
-Learning new tech
-Teaching others how to code the right way
-Web Development & Game Development
-Creating real-world apps (club systems, booking apps, fantasy league clones)
-Everything shared here is raw, real, and tested by me.
+- **Tech:** Flask, Firebase (Auth + Firestore), Tailwind CSS
+- **Features:** £100m budget team builder, Auto points calculation, Live leaderboard, Admin panel
+- **Live:** [View Demo](https://fantasy-hillrange-league.onrender.com)
+- **Code:** [GitHub Repo](https://github.com/SkyNinjaX/fantasy-hillrange-league)
 
-🚀 Features
+---
 
-Home Page: Overview of the latest coding posts and guides.
-About Page: Detailed background on the author and mission.
-Contact Page: Navigation link for reaching out.
-Responsive Design: Optimized to look great on any screen (utilizing Tailwind CSS utilities).
-SEO Ready: Includes Google Site Verification configuration.
+## 🛠 Technical Skills
 
-🛠 Tech Stack
+### Languages
+- Python
+- JavaScript
+- HTML5 & CSS3
 
-HTML5: Structure and content.
-Tailwind CSS: Utility-first styling for responsive design.
-JavaScript: Interactive elements and coding guides.
-Google Search Console: Verified via google83d7e77c1ed3dd71.html.
+### Frameworks & Tools
+- Flask
+- Firebase (Auth & Firestore)
+- Tailwind CSS
+- Git & GitHub
+- SQLite
 
-📂 Project Structure
+### Core Concepts
+- RESTful Routing
+- User Authentication & Authorization
+- Role-Based Access Control (RBAC)
+- CRUD Operations
+- Database Design
+- Responsive Web Design
 
-text
-123456
-.
-├── google83d7e77c1ed3dd71.html # Google Site Verification
-├── index.html # Home Page (Latest Posts)
-├── about.html # About Page
-├── contact.html # Contact Page (Linked in nav)
-└── README.md # Project Documentation
+---
 
-📝 Latest Topics Covered
+## 📚 Education
 
-How to Code: A Beginner's Guide
-Languages: Python, HTML, JavaScript
-Frameworks: Flask vs Django
-Styling: Intro to Tailwind CSS, Responsive Design
-Tips: Basic JavaScript Tips (let vs const, arrow functions)
+| Degree | Institution | Year |
+|--------|-------------|------|
+| B.Eng Computer Science | University of Nigeria, Nsukka | Year 1 |
 
-🏃 Getting Started
+---
 
-Since this is a static site, you can view it directly in your browser:
-Clone or download this repository.
-Open index.html in your preferred web browser.
-Navigate through the site using the provided links (Home, About, Contact).
+## 🎯 Career Goal
 
-📄 License
-© 2025 𝔻𝕠𝕠𝕞𝕫𝕖𝕖. All rights reserved.
+> To become a highly skilled software engineer capable of building **scalable and secure systems** that solve real-world problems.
+
+---
+
+## 📬 Contact
+
+| Platform | Link |
+|----------|------|
+| **Email** | [dumtomicheal@gmail.com](mailto:dumtomicheal@gmail.com) |
+| **GitHub** | [github.com/SkyNinjaX](https://github.com/SkyNinjaX) |
+| **LinkedIn** | [linkedin.com/in/dumto-o-457a65385/](https://www.linkedin.com/in/dumto-o-457a65385/) |
+
+---
+
+## 📄 License
+
+This portfolio is open source and available under the [MIT License](LICENSE).
+
+---
+
+## 🙏 Acknowledgments
+
+- Built with ❤️ and lots of coffee
+- Inspired by modern design trends and best practices
+- Thanks to the open-source community for amazing tools!
+
+---
+
+<p align="center">
+  <strong>© 2024 Dumto Okonkwo | Crafted with Code</strong>
+</p>
