@@ -49,7 +49,7 @@ A full Fantasy Premier League-style web application with real-time leaderboards.
 
 | Degree | Institution | Year |
 |--------|-------------|------|
-| B.Eng Computer Science | University of Nigeria, Nsukka | Year 1 |
+| B.Sci Computer Science | University of Nigeria, Nsukka | Year 1 |
 
 ---
 
@@ -86,3 +86,4 @@ This portfolio is open source and available under the [MIT License](LICENSE).
 <p align="center">
   <strong>© 2024 Dumto Okonkwo | Crafted with Code</strong>
 </p>
+
